@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -14,10 +16,10 @@ app.use(express.urlencoded({
 
 app.set("view engine","ejs");
 
-mongoose.connect('mongodb://127.0.0.1:27017/foodie',{
+mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.zto5axo.mongodb.net/test`),{
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
+};
 
 var db = mongoose.connection;
 
